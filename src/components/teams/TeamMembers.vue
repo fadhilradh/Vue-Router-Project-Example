@@ -29,7 +29,7 @@ export default {
     };
   },
   methods: {
-    updateRoute(teamId) {
+    loadTeamMembers(teamId) {
       const selectedTeam = this.teams.find((team) => team.id === teamId);
       const members = selectedTeam.members;
       const selectedMembers = [];
@@ -42,11 +42,12 @@ export default {
     },
   },
   created() {
-    this.updateRoute(this.teamId);
+    // this.$route.path // /teams/t1
+    this.loadTeamMembers(this.teamId);
   },
   watch: {
-    teamId(newRoute) {
-      this.updateRoute(newRoute);
+    teamId(newId) {
+      this.loadTeamMembers(newId);
     },
   },
 };
